@@ -1,6 +1,6 @@
 name: Solar System Workflow
 run-name: >-
-  if [[ ${{ github.event_name }} == 'pull_request' ]]; then
+  if [[ ${{ github.event_name }} == "pull_request" ]]; then
     "Pull request"
   else
     "Workflow"
