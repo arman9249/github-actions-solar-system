@@ -1,5 +1,9 @@
 name: Solar System Workflow
-
+run-name: >-
+  if [[ ${{ github.event_name }} == 'pull_request' ]]; then
+    "Pull request"
+  else
+    "Workflow"
 on: 
   workflow_dispatch: null
   push:
