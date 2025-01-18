@@ -1,4 +1,6 @@
 name: Solar System Workflow
+run-name: "${{ github.event.inputs.operation == 'init' && format('Provision') || format('Destroy') }} terraform state for the customer ${{ github.event.inputs.customer_name}}. Branch: ${{ github.ref_name }} and msg: ${{ github.event.head_commit.message}}"
+  
 on: 
   workflow_dispatch: null
   push:
