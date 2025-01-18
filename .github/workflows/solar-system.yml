@@ -74,6 +74,8 @@ jobs:
         needs:
         - code-coverage
         - unit-testing
+        permissions: 
+          packages: write
         steps:
         - uses: actions/checkout@v4
         - name: Set lowercase repository owner
