@@ -1,6 +1,4 @@
 name: Solar System Workflow
-run-name: "${{ github.event.inputs.operation == 'init' && format('Provision') || format('Destroy') }} terraform state for the customer ${{ github.event.inputs.customer_name}}. Branch: ${{ github.ref_name }} and msg: ${{ github.event.head_commit.message}}"
-  
 on: 
   workflow_dispatch: null
   push:
@@ -70,4 +68,26 @@ jobs:
             name: Code-Coverage-Result
             path: coverage
             retention-days: 5
+
+    docker:
+      runs-on: ubuntu-latest
+      needs: [unit-testing, code-coverage]
+      steps:
+        - name: Checkout Repo
+          uses: actions/checkout@v4
+
+        - name: Docker login
+          uses: docker/login-action@v3
+          with:
+            registry: ghcr.io
+            username: ${{ vars.DOCKERHUB_USERNAME }}
+            password: ${{ secrets.GITHUB_TOKEN}}
+
+        - name: Docker Push
+          uses: docker/build-push-action@v4
+          with:
+            context: .
+            push: true
+            tags: ghcr.io/${{ vars.DOCKERHUB_USERNAME }}/solar-system:${{ github.sha }}
+
 
