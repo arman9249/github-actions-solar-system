@@ -93,7 +93,7 @@ jobs:
           with:
             context: .
             push: true
-            tags: 'ghcr.io/${{ env.REPO_OWNER_LC }}/solar-system:${{ github.sha }}'
+            tags: '${{ vars.DOCKERHUB_USERNAME  }}/solar-system:${{ github.sha }}'
 
     dev-deploy:
         runs-on: ubuntu-latest
