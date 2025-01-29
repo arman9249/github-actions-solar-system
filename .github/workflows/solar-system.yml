@@ -112,5 +112,10 @@ jobs:
         - name: Get kubectl version
           run: |
             kubectl version --short -o yaml
+    
+    integration-testing:
+        uses: ./.github/workflows/reusable-workflow.yml
+        with:
+          ingress-url: ${{ needs.dev-deploy.outputs.APP_INGRESS_URL }}
 
 
