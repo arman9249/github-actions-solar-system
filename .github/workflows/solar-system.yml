@@ -110,6 +110,7 @@ jobs:
             method: kubeconfig
             kubeconfig: ${{ secrets.KUBECONFIG }}
         - name: Get kubectl version
+          continue-on-error: true
           run: |
             kubectl version --short -o yaml
     
