@@ -1,0 +1,6 @@
+{
+    "yaml.schemas": {
+        "Kubernetes": "*.yaml",
+        "https://json.schemastore.org/github-action.json": "file:///d%3A/Cursos/KodeKloud/GHA/Repos/github-actions-solar-system/.github/custom-actions/npm-actions/actions.yml"
+    }
+}
